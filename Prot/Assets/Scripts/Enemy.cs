@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 100; //vida inimigo
+    private PlayerController player;
 
-    public GameObject deathEffect;
-
-    public void TakeDamage (int damage) //função dano no inimigo
+     void Start()
     {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
-    void Die() //morrer
+     void OnTriggerEnter2D(Collider2D col)
     {
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        if (col.CompareTag("Player"))
+        {
+            player.Damage(1);
+        }
+
+        //ienumerator playercontroller
+        StartCoroutine(player.Knockback(0.02f, 350, player.transform.position));
     }
 }

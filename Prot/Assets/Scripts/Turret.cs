@@ -31,7 +31,7 @@ public class Turret : MonoBehaviour
         angle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + offset));
 
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetButtonDown("Fire2"))
         {
             Shoot();
         }

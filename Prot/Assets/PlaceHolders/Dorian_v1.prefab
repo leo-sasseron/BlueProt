@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 1158087383544187751}
   m_Layer: 0
   m_Name: Dorian_v1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   extraJumpsValue: 1
+  curHealth: 0
+  maxhealth: 100
 --- !u!50 &1158087383544187756
 Rigidbody2D:
   serializedVersion: 4
