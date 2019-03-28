@@ -13,17 +13,18 @@ public class Turret : MonoBehaviour
     private Transform target;
     private Vector3 targetPos;
     private Vector3 thisPos;
-    private float angle;    
+    private float angle;
 
     // Start is called before the first frame update
     void Start()
-     {
-        target = GameObject.FindGameObjectWithTag(Tag).GetComponent<Transform>();        
+    {
+        target = GameObject.FindGameObjectWithTag(Tag).GetComponent<Transform>();
+        StartCoroutine(Attack());
     }
 
-     // Update is called once per frame
-     void Update()
-     {
+    // Update is called once per frame
+    void Update()
+    {
         targetPos = target.position;
         thisPos = transform.position;
         targetPos.x = targetPos.x - thisPos.x;
@@ -31,14 +32,28 @@ public class Turret : MonoBehaviour
         angle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + offset));
 
-        if (Input.GetButtonDown("Fire2"))
+        /*
+        if (Input.GetKeyDown(KeyCode"Fire2"))
         {
             Shoot();
         }
+        
     }
 
     void Shoot()
     {        
         Instantiate(bulletPrefab, BulletSpawner.position, BulletSpawner.rotation);
     }
+    */
+
+
+    }
+
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(3);
+        Instantiate(bulletPrefab, BulletSpawner.position, BulletSpawner.rotation);
+        StartCoroutine(Attack());
+    }
+
 }
