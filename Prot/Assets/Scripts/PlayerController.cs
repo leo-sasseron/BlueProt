@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //repulsao, joga o player longe
+    /*
     public IEnumerator Knockback (float knockDur, float knockbackPwr, Vector3 knockbackDir)
     {        
         float timer = 0;
@@ -107,4 +108,5 @@ public class PlayerController : MonoBehaviour
 
         yield return null;
     }
+    */
 }
